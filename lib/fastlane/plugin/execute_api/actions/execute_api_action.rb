@@ -1,4 +1,5 @@
 require 'fastlane/action'
+require 'rest-client'
 require_relative '../helper/execute_api_helper'
 
 module Fastlane
