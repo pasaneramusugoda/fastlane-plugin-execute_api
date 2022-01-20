@@ -18,6 +18,7 @@ module Fastlane
         params[:multipartPayload] = config[:multipartPayload]
         params[:headers] = config[:headers]
 
+        upload_artifacts = params[:uploadArtifacts]
         apk_file = params[:apk]
         ipa_file = params[:ipa]
         custom_file = params[:file]
@@ -26,7 +27,7 @@ module Fastlane
 
         UI.user_error!("No endPoint given, pass using endPoint: 'endpoint'") if end_point.to_s.length == 0
 
-        if params[:uploadArtifacts]
+        if upload_artifacts
           UI.user_error!("No IPA or APK or a file path given, pass using `ipa: 'ipa path'` or `apk: 'apk path' or file:`") if ipa_file.to_s.length == 0 && apk_file.to_s.length == 0 && custom_file.to_s.length == 0
           UI.user_error!("Please only give IPA path or APK path (not both)") if ipa_file.to_s.length > 0 && apk_file.to_s.length > 0
 
