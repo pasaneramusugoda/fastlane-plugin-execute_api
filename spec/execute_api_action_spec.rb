@@ -9,7 +9,6 @@ describe Fastlane::Actions::ExecuteApiAction do
           end").runner.execute(:test)
         end.to raise_error("No endPoint given, pass using endPoint: 'endpoint'")
       end
-  
       it "raise an error if no IPA or apk was given" do
         expect do
           Fastlane::FastFile.new.parse("lane :test do
