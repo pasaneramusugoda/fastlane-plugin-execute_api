@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'vaprera91@gmail.com'
 
   spec.summary       = 'This plugin will be used to execute an api'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-execute_api"
+  spec.homepage      = "https://github.com/pasaneramusugoda/fastlane-plugin-execute_api"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
