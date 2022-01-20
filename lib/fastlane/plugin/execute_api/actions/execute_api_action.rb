@@ -8,7 +8,7 @@ module Fastlane
       def self.run(config)
         params = {}
         # extract parms from config received from fastlane
-        # params[:uploadArtifacts] = config[:uploadArtifacts]
+        params[:uploadArtifacts] = config[:uploadArtifacts]
         params[:endPoint] = config[:endPoint]
         params[:apk] = config[:apk]
         params[:ipa] = config[:ipa]
