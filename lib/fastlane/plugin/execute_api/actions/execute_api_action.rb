@@ -22,10 +22,10 @@ module Fastlane
         apk_file = params[:apk]
         ipa_file = params[:ipa]
         custom_file = params[:file]
-        
+
         end_point = params[:endPoint]
 
-        UI.user_error!("No endPoint given, pass using endPoint: 'endpoint'") if end_point.to_s.length == 0 && end_point.to_s.length == 0
+        UI.user_error!("No endPoint given, pass using endPoint: 'endpoint'") if end_point.to_s.length == 0
         UI.user_error!("No IPA or APK or a file path given, pass using `ipa: 'ipa path'` or `apk: 'apk path' or file:`") if upload_artifacts && ipa_file.to_s.length == 0 && apk_file.to_s.length == 0 && custom_file.to_s.length == 0
         UI.user_error!("Please only give IPA path or APK path (not both)") if upload_artifacts && ipa_file.to_s.length > 0 && apk_file.to_s.length > 0
 
@@ -45,13 +45,13 @@ module Fastlane
         multipart_payload[:multipart] = true
         if multipart_payload[:fileFormFieldName]
           key = multipart_payload[:fileFormFieldName]
-          multipart_payload["#{key}"] = File.new(custom_file, 'rb')
+          multipart_payload[key.to_s] = File.new(custom_file, 'rb')
         else
           multipart_payload[:file] = File.new(custom_file, 'rb')
         end
 
-      UI.message multipart_payload
-      upload_request(params, multipart_payload)
+        UI.message(multipart_payload)
+        upload_request(params, multipart_payload)
       end
 
       def self.upload_request(params, multipart_payload)
@@ -60,7 +60,7 @@ module Fastlane
           url: params[:endPoint],
           payload: multipart_payload,
           headers: params[:headers],
-          log: Logger.new(STDOUT)
+          log: Logger.new($stdout)
         )
 
         response = request.execute
