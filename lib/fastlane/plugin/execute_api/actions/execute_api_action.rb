@@ -68,11 +68,7 @@ module Fastlane
         response = request.execute
         UI.message(response)
         if response.code == 200 || response.code == 201
-          if params[:uploadArtifacts]
-            UI.success("Successfully finished uploading the fille")
-          else
-            UI.success("Successfully finished executing the request")
-          end
+          params[:uploadArtifacts]? UI.success("Successfully finished uploading the fille") : UI.success("Successfully finished executing the request")
         end
       end
 
