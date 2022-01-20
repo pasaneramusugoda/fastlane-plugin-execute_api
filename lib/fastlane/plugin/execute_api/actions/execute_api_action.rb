@@ -26,11 +26,10 @@ module Fastlane
         end_point = params[:endPoint]
 
         UI.user_error!("No endPoint given, pass using endPoint: 'endpoint'") if end_point.to_s.length == 0
+        UI.user_error!("No IPA or APK or a file path given, pass using `ipa: 'ipa path'` or `apk: 'apk path' or file:`") if upload_artifacts && ipa_file.to_s.length == 0 && apk_file.to_s.length == 0 && custom_file.to_s.length == 0
+        UI.user_error!("Please only give IPA path or APK path (not both)") if upload_artifacts && ipa_file.to_s.length > 0 && apk_file.to_s.length > 0
 
         if upload_artifacts
-          UI.user_error!("No IPA or APK or a file path given, pass using `ipa: 'ipa path'` or `apk: 'apk path' or file:`") if ipa_file.to_s.length == 0 && apk_file.to_s.length == 0 && custom_file.to_s.length == 0
-          UI.user_error!("Please only give IPA path or APK path (not both)") if ipa_file.to_s.length > 0 && apk_file.to_s.length > 0
-
           upload_custom_file(params, apk_file) if apk_file.to_s.length > 0
           upload_custom_file(params, ipa_file) if ipa_file.to_s.length > 0
           upload_custom_file(params, custom_file) if custom_file.to_s.length > 0
