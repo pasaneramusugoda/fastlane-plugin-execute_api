@@ -95,7 +95,7 @@ module Fastlane
                                   env_name: "",
                                   description: "uploading any file or not",
                                   optional: true,
-                                  default_value: :false),
+                                  default_value: false),
           FastlaneCore::ConfigItem.new(key: :apk,
                                   env_name: "",
                                   description: ".apk file for the build",
