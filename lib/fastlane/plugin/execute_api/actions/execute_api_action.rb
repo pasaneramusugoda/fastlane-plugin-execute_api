@@ -18,9 +18,6 @@ module Fastlane
         params[:multipartPayload] = config[:multipartPayload]
         params[:headers] = config[:headers]
 
-        puts params[:uploadArtifacts]
-        puts params[:uploadArtifacts]?
-        
         upload_artifacts = params[:uploadArtifacts]
         apk_file = params[:apk]
         ipa_file = params[:ipa]
